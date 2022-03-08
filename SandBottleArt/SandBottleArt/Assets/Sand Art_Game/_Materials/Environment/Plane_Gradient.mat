@@ -1,0 +1,49 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Plane_Gradient
+  m_Shader: {fileID: -6465566751694194690, guid: a522c3f10be9dab4f9006fdca595a04a,
+    type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs: []
+    m_Ints: []
+    m_Floats:
+    - Vector1_1E4457D1: 0.15
+    - Vector1_594DD9B5: 0
+    - Vector1_63404B3B: 0.65
+    - Vector1_6B97E837: 0.46
+    - Vector1_956A0313: 0.25
+    - Vector1_C944B391: 0
+    m_Colors:
+    - Color_22647CB5: {r: 0.7882353, g: 0.043137237, b: 0.6784314, a: 1}
+    - Color_62E99C59: {r: 0.4433962, g: 0, b: 0.37959808, a: 1}
+    - Color_A2FD6A21: {r: 0.5566037, g: 0.013127446, b: 0.47651243, a: 1}
+    - Color_F6745DBB: {r: 0.7882353, g: 0.043137237, b: 0.6784314, a: 1}
+  m_BuildTextureStacks: []
+--- !u!114 &1966026470401730338
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 5

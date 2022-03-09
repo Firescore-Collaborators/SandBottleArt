@@ -15,7 +15,7 @@ MonoBehaviour:
   title: Paint in 3D/Alpha
   target: {fileID: 4800000, guid: 9f01b1d1d9b572c498cc565d0e530b40, type: 3}
   variantHash: 968456873
-  projectHash: -937875281
+  projectHash: -435371746
   variants:
   - Pipe: 0
     Code: "//<HASH>968456873</HASH>\n////////////////////////////////////////\n//

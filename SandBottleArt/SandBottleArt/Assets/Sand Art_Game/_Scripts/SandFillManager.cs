@@ -14,6 +14,7 @@ public class SandStep
 public class SandFillManager : MonoBehaviour
 {
     public SandStep[] gameSteps;
+    public GameObject sandPaint;
     public float increaseSpeed;
 
     public int currentStep;
@@ -31,8 +32,16 @@ public class SandFillManager : MonoBehaviour
     public bool ToFill
     {
         set{
-            ToggleParticles(value);
-            toFill = value;
+            if(gameSteps.Length>currentStep)
+            {
+                ToggleParticles(value);
+            }
+            else{
+                ToggleParticles(false);
+            }
+            Timer.Delay(0.75f, () => {
+                toFill = value;
+            });
         }
 
         get{
@@ -45,12 +54,9 @@ public class SandFillManager : MonoBehaviour
     {
         SetInput();
 
-        if (ToFill)
+        if (toFill)
         {
-            if(gameSteps.Length > currentStep)
-            {
-                FillSand();
-            }
+            FillSand();
         }
 
         if(toMove)
@@ -97,10 +103,13 @@ public class SandFillManager : MonoBehaviour
         if(weight == 100)
         {
             currentStep++;
-            ToFill = false;
+            toFill = false;
+            ToggleParticles(false);
             toMove = false;
             if(currentStep >= gameSteps.Length)
             {
+                sandPaint.SetActive(true);
+                gameSteps[0].rend.gameObject.SetActive(false);
                 return;
             }
 

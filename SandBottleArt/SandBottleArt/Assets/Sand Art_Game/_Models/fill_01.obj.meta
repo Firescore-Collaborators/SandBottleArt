@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 93c1f91285836324aa927e895117c56e
+guid: 6f9d973048f67ae47b53491066813cbc
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
@@ -7,13 +7,13 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Caps
-    second: {fileID: 2100000, guid: e66a0a748c667974d9e05250c25e08dd, type: 2}
+      name: Fill_01_polySurface2Mat
+    second: {fileID: 2100000, guid: b4491367b6ff36d4da0d14ce727c9e6c, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Strips
-    second: {fileID: 2100000, guid: bf87c75ac1ffd654aa08aee3de455643, type: 2}
+      name: polySurface1_Fill_01Mat
+    second: {fileID: 2100000, guid: 33839dcd7228c0e419a44dbd106ce69d, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

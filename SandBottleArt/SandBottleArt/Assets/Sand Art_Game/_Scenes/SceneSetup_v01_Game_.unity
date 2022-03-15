@@ -1769,7 +1769,7 @@ MonoBehaviour:
   async: 1
   downsampleSteps: 3
   registeredPaintableTexture: {fileID: 870596338}
-  cooldown: -625.4236
+  cooldown: -628.2925
   currentReader:
     requested: 0
     buffer: {fileID: 0}
@@ -3573,8 +3573,8 @@ MonoBehaviour:
   interval: 0
   async: 1
   downsampleSteps: 3
-  registeredPaintableTexture: {fileID: 1820919439}
-  cooldown: -82.819084
+  registeredPaintableTexture: {fileID: 0}
+  cooldown: -84.172424
   currentReader:
     requested: 0
     buffer: {fileID: 0}
@@ -4132,7 +4132,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 35c1f4a96c31d78499a100614b1c34a2, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 35c1f4a96c31d78499a100614b1c34a2, type: 3}

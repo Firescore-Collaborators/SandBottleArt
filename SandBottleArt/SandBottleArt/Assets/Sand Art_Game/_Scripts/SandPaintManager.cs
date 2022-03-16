@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using PaintIn3D;
 
 [System.Serializable]
 public class SandPaintStep
@@ -18,7 +19,11 @@ public class SandPaint
     public SandPaintStep empty;
     public Color color;
     public Transform fillLerpPos;
-
+    [HideInInspector]
+    public Vector3 startPos;
+    public  P3dChangeCounter counter;
+    
+    public float paintedMax;
     public float timeDelay
     {
         get{
@@ -72,8 +77,11 @@ public class SandPaintManager : MonoBehaviour
         }
     }
 
-    void Start()
+    void OnEnable()
     {
+        paint.SetActive(false);
+        currentStep.startPos = currentStep.rend.transform.position;
+        currentStep.rend.gameObject.SetActive(true);
         SetSandColor();
     }
 
@@ -114,29 +122,45 @@ public class SandPaintManager : MonoBehaviour
                 weight = Mathf.Clamp(weight, 0, 100);
                 currentStep.rend.SetBlendShapeWeight(0, weight);
                 float lerpValue = Remap.remap(weight, 0, 100, 0, 1,false,false,false,false);
-                LerpObjectPosition.instance.LerpObject(currentStep.rend.transform,currentStep.fillLerpPos.position,lerpValue);
+                currentStep.rend.transform.position = Vector3.Lerp(currentStep.startPos, currentStep.fillLerpPos.position, lerpValue);
                 if(weight >= currentStep.fill.endValue)
                 {
+                    currentStep.rend.SetBlendShapeWeight(0, 100);
                     currentStep.fill.completed = true;
                     MouseDown = false;
                     toFill = false;
+                    paint.SetActive(true);
                 }
             }
             else{
 
-                paint.SetActive(true);
+                float count = currentStep.counter.Count;
 
-                float weight = currentStep.rend.GetBlendShapeWeight(0);
-                weight -= increaseSpeed * Time.deltaTime;
-                weight = Mathf.Clamp(weight, 0, 100);
-                currentStep.rend.SetBlendShapeWeight(0, weight);
+                float weight = Remap.remap(count,currentStep.counter.Total,currentStep.paintedMax,100,0,false,false,false,false);
+                float lerpValue = Remap.remap(weight, 100, 0, 0, 1,false,false,false,false);
+                currentStep.rend.transform.position = Vector3.Lerp(currentStep.fillLerpPos.position, currentStep.startPos, lerpValue);
+                currentStep.rend.SetBlendShapeWeight(0,weight);
 
-                if(weight <= currentStep.empty.endValue)
+                if(count <= currentStep.paintedMax)
                 {
                     currentStep.empty.completed = true;
                     MouseDown = false;
                     toFill = false;
+                    this.enabled = false;
+                    GetComponent<GameManager>().enabled = true;
                 }
+
+                // float weight = currentStep.rend.GetBlendShapeWeight(0);
+                // weight -= increaseSpeed * Time.deltaTime;
+                // weight = Mathf.Clamp(weight, 0, 100);
+                // currentStep.rend.SetBlendShapeWeight(0, weight);
+
+                // if(weight <= currentStep.empty.endValue)
+                // {
+                //     currentStep.empty.completed = true;
+                //     MouseDown = false;
+                //     toFill = false;
+                // }
             }
 
             if(currentStep.fill.completed && currentStep.empty.completed)
@@ -150,12 +174,15 @@ public class SandPaintManager : MonoBehaviour
     void SetSandColor()
     {
         //Assing Mesh Color
+        //currentStep.rend.material.SetColor("_BaseColor", currentStep.color);
         currentStep.rend.material.color = currentStep.color;
+
 
         // Assign particle Color
         ParticleSystem.MainModule main = sandParticles.main;
         main.startColor = currentStep.color;
     }
+
 
     void ToggleParticles(bool status)
     {

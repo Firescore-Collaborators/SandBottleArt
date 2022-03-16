@@ -9,6 +9,8 @@ public class SandStep{
     public SkinnedMeshRenderer rend;
     public Color sandColor;
     public float fillTimeDelay;
+
+    public bool toDraw;
 }
 
 public class GameManager : MonoBehaviour
@@ -57,7 +59,7 @@ public class GameManager : MonoBehaviour
 
     int currentStepIndex;
 
-    void Start() {
+    void OnEnable() {
         SetSandColor();
     }
 
@@ -132,20 +134,23 @@ public class GameManager : MonoBehaviour
         ToggleParticles(false);
 
         SwitchMesh();
+
         
         if(currentStepIndex >= gameSteps.Length) {return;}
 
-        SetSandColor();
     }
 
     void SetSandColor()
     {
         //Assing Mesh Color
-        currentStep.rend.material.color = currentStep.sandColor;
+        //currentStep.rend.material.SetColor("_BaseColor", currentStep.sandColor);
+        currentStep.rend.material.SetColor("_BaseColor", currentStep.sandColor);
 
         // Assign particle Color
         ParticleSystem.MainModule main = sandParticles.main;
         main.startColor = currentStep.sandColor;
+
+        print("sandColor");
     }
 
     void ToggleParticles(bool status)
@@ -174,7 +179,21 @@ public class GameManager : MonoBehaviour
         }
         paintObject[currentStepIndex].materials = mats;
         paintObject[currentStepIndex].gameObject.SetActive(true);
-        currentStepIndex++;
+
+        //Check if we should draw 
+
+        if(currentStep.toDraw)
+        {
+            this.enabled = false;
+            GetComponent<SandPaintManager>().enabled = true;
+            currentStepIndex++;
+        }
+        else{
+            currentStepIndex++;
+            SetSandColor();
+        }
+        
+        
     }
 
     [Button]

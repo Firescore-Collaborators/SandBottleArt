@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &1
+MonoBehaviour:
+  m_ObjectHideFlags: 52
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 12323, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: SandEmissionColors
+  m_EditorClassIdentifier: 
+  m_Presets:
+  - m_Name: 
+    m_Color: {r: 0.15657456, g: 0.08664116, b: 0.31132078, a: 1}
+  - m_Name: 
+    m_Color: {r: 0.08503916, g: 0.33912787, b: 0.3679245, a: 1}
+  - m_Name: 
+    m_Color: {r: 0.11028158, g: 0.2830189, b: 0.06541475, a: 1}
+  - m_Name: 
+    m_Color: {r: 0.4056604, g: 0.3272512, b: 0.109069064, a: 1}
+  - m_Name: 
+    m_Color: {r: 0.9339623, g: 0.22499958, b: 0.12775902, a: 1}
+  - m_Name: 
+    m_Color: {r: 1, g: 0.6541486, b: 0.3726415, a: 1}
+  - m_Name: 
+    m_Color: {r: 0.7830189, g: 0.16620687, b: 0.6147976, a: 1}

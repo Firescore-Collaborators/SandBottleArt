@@ -20,7 +20,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _AmbientOclussion:
-        m_Texture: {fileID: 2800000, guid: 8d27fe480fd3a25408667e94d6baba7b, type: 3}
+        m_Texture: {fileID: 2800000, guid: 1f242da62ddb35b46a0def2870eaa9f2, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BaseMap:
@@ -56,7 +56,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NormalMap:
-        m_Texture: {fileID: 2800000, guid: 29104335dda4db345ba84709d7c44d90, type: 3}
+        m_Texture: {fileID: 2800000, guid: 32ab16f9f2607644eb791bc1d1415697, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
@@ -84,7 +84,7 @@ Material:
     - _Mode: 0
     - _NoiseScale: 0
     - _NormalStrength: 0.5
-    - _OcclusionStrength: 0.65
+    - _OcclusionStrength: 0.75
     - _Parallax: 0.02
     - _Smoothness: 0
     - _SmoothnessTextureChannel: 0
@@ -94,8 +94,8 @@ Material:
     - _ZWrite: 1
     - __dirty: 1
     m_Colors:
-    - _BaseColor: {r: 0.39725396, g: 0.6698113, b: 0.21800463, a: 1}
+    - _BaseColor: {r: 0.34856164, g: 0.9528302, b: 0.19326274, a: 1}
     - _Color: {r: 0.5376661, g: 0.972549, b: 0.25098044, a: 1}
-    - _EmissionColor: {r: 0.15365857, g: 0.5943396, b: 0.025231387, a: 1}
-    - _Tiling: {r: 10, g: 5, b: 0, a: 0}
+    - _EmissionColor: {r: 0.11357806, g: 0.23584908, b: 0.08121218, a: 1}
+    - _Tiling: {r: 1, g: 1, b: 0, a: 0}
   m_BuildTextureStacks: []

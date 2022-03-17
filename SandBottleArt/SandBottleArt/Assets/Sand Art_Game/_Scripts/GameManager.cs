@@ -150,7 +150,6 @@ public class GameManager : MonoBehaviour
         ParticleSystem.MainModule main = sandParticles.main;
         main.startColor = currentStep.sandColor;
 
-        print("sandColor");
     }
 
     void ToggleParticles(bool status)
@@ -186,6 +185,7 @@ public class GameManager : MonoBehaviour
         {
             this.enabled = false;
             GetComponent<SandPaintManager>().enabled = true;
+            CameraController.instance.SetCurrentCamera(Cameras.camera2);
             currentStepIndex++;
         }
         else{

@@ -12,6 +12,7 @@ public enum Cameras
 
 public class CameraController : MonoBehaviour
 {
+    public static CameraController instance;
     public Cameras currentCam;
     [SerializeField] CinemachineVirtualCamera camera1;
     [SerializeField] CinemachineVirtualCamera camera2;
@@ -21,6 +22,16 @@ public class CameraController : MonoBehaviour
     CinemachineBrain brain;
     public bool isBlending;
     
+    private void Awake() {
+        if(instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(this);
+        }    
+    }
 
     private void Start() {
         

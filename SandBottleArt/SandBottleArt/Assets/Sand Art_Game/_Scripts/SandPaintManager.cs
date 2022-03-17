@@ -12,6 +12,16 @@ public class SandPaintStep
 }
 
 [System.Serializable]
+public class CounterStep
+{
+    public  P3dChangeCounter counter;
+    public  float count;
+
+    public float percentComplete;
+
+}
+
+[System.Serializable]
 public class SandPaint
 {
     public SkinnedMeshRenderer rend;
@@ -22,6 +32,7 @@ public class SandPaint
     [HideInInspector]
     public Vector3 startPos;
     public  P3dChangeCounter counter;
+    public CounterStep[] counters;
     
     public float paintedMax;
     public float timeDelay
@@ -111,7 +122,7 @@ public class SandPaintManager : MonoBehaviour
         }
     }
 
-    void FillSand()
+    async void FillSand()
     {
         if(toFill)
         {
@@ -133,21 +144,31 @@ public class SandPaintManager : MonoBehaviour
                 }
             }
             else{
+                float sum = 0;
+                for(int i = 0; i < currentStep.counters.Length; i++)
+                {
+                    currentStep.counters[i].percentComplete = Remap.remap(currentStep.counters[i].counter.Count, currentStep.counters[i].counter.Total, currentStep.counters[i].count, 0, 100,false,false,false,false);
+                    currentStep.counters[i].percentComplete = Mathf.Clamp(currentStep.counters[i].percentComplete, 0, 100);
+                    sum+= currentStep.counters[i].percentComplete;
+                }
+                
+                sum/=3;
 
-                float count = currentStep.counter.Count;
-
-                float weight = Remap.remap(count,currentStep.counter.Total,currentStep.paintedMax,100,0,false,false,false,false);
-                float lerpValue = Remap.remap(weight, 100, 0, 0, 1,false,false,false,false);
+                float weight = sum;
+                //float weight = Remap.remap(count,currentStep.counter.Total,currentStep.paintedMax,100,0,false,false,false,false);
+                float lerpValue = Remap.remap(weight, 0, 100, 0, 1,false,false,false,false);
                 currentStep.rend.transform.position = Vector3.Lerp(currentStep.fillLerpPos.position, currentStep.startPos, lerpValue);
-                currentStep.rend.SetBlendShapeWeight(0,weight);
+                float blendWeight = Remap.remap(weight, 0, 100, 100, 0,false,false,false,false);
+                currentStep.rend.SetBlendShapeWeight(0,blendWeight);
 
-                if(count <= currentStep.paintedMax)
+                if(weight >=100)
                 {
                     currentStep.empty.completed = true;
                     MouseDown = false;
                     toFill = false;
                     this.enabled = false;
                     GetComponent<GameManager>().enabled = true;
+                    CameraController.instance.SetCurrentCamera(Cameras.camera1);
                 }
 
                 // float weight = currentStep.rend.GetBlendShapeWeight(0);

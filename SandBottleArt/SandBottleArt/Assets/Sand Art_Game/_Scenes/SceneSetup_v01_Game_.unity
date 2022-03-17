@@ -201,8 +201,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 19597044}
-  m_LocalRotation: {x: 0, y: -1, z: 0, w: -0.0000001872535}
-  m_LocalPosition: {x: -0.029999971, y: 6.40219, z: 26.368214}
+  m_LocalRotation: {x: 0, y: -0.97940874, z: 0.20188761, w: 0}
+  m_LocalPosition: {x: -0.029999971, y: 13.17, z: 29.09}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -528,11 +528,11 @@ MonoBehaviour:
   - rend: {fileID: 66977440}
     sandColor: {r: 0.90588236, g: 0.4392157, b: 0.78039217, a: 1}
     fillTimeDelay: 1.2
-    toDraw: 1
+    toDraw: 0
   - rend: {fileID: 509656292}
     sandColor: {r: 0.9607843, g: 0.62352943, b: 0.34901962, a: 1}
     fillTimeDelay: 1
-    toDraw: 1
+    toDraw: 0
   - rend: {fileID: 1582625047}
     sandColor: {r: 0.3529412, g: 0.85882354, b: 0.10980392, a: 1}
     fillTimeDelay: 0.8
@@ -561,7 +561,7 @@ MonoBehaviour:
   - {fileID: 2064873083}
   - {fileID: 1862685862}
   - {fileID: 776963000}
-  increaseSpeed: 30
+  increaseSpeed: 80
   mousedown: 0
   toFill: 0
   sandParticles: {fileID: 1751772161}
@@ -602,34 +602,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sandPaint:
-  - rend: {fileID: 1321943912}
-    fill:
-      endValue: 100
-      timeDelay: 0.9
-      completed: 0
-    empty:
-      endValue: 0
-      timeDelay: 0
-      completed: 0
-    color: {r: 0, g: 0, b: 0, a: 1}
-    fillLerpPos: {fileID: 1497826803}
-    startPos: {x: 0, y: 0, z: 0}
-    counter: {fileID: 507290611}
-    paintedMax: 261376
-  - rend: {fileID: 1694874365}
-    fill:
-      endValue: 100
-      timeDelay: 0.75
-      completed: 0
-    empty:
-      endValue: 0
-      timeDelay: 0
-      completed: 0
-    color: {r: 0, g: 0, b: 0, a: 1}
-    fillLerpPos: {fileID: 407483030}
-    startPos: {x: 0, y: 0, z: 0}
-    counter: {fileID: 2128552757}
-    paintedMax: 258944
   - rend: {fileID: 910001362}
     fill:
       endValue: 100
@@ -643,10 +615,20 @@ MonoBehaviour:
     fillLerpPos: {fileID: 1725837446}
     startPos: {x: 0, y: 0, z: 0}
     counter: {fileID: 1441630830}
+    counters:
+    - counter: {fileID: 507290611}
+      count: 261400
+      percentComplete: 0
+    - counter: {fileID: 2128552757}
+      count: 260000
+      percentComplete: 0
+    - counter: {fileID: 1441630830}
+      count: 259712
+      percentComplete: 0
     paintedMax: 259712
   mousedown: 0
   toFill: 0
-  increaseSpeed: 30
+  increaseSpeed: 150
   sandParticles: {fileID: 1751772161}
   paint: {fileID: 1757727972}
 --- !u!1 &242298294
@@ -1083,7 +1065,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4699422113571928, guid: 984505ee1340f5344b8a220626d7fb79, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 11.87
+      value: 12.37
       objectReference: {fileID: 0}
     - target: {fileID: 4699422113571928, guid: 984505ee1340f5344b8a220626d7fb79, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1190,7 +1172,7 @@ MonoBehaviour:
   wrapV: -1
   existing: 2
   conversion: 0
-  localMaskTexture: {fileID: 2800000, guid: 2333a4f0e7adb704086b7808b9bad0c9, type: 3}
+  localMaskTexture: {fileID: 2800000, guid: 7876b3eafa2f8c94a981bf794478d779, type: 3}
   localMaskChannel: 0
   shaderKeyword: 
   hash:
@@ -1277,7 +1259,7 @@ MonoBehaviour:
   wrapV: -1
   existing: 2
   conversion: 0
-  localMaskTexture: {fileID: 2800000, guid: 2333a4f0e7adb704086b7808b9bad0c9, type: 3}
+  localMaskTexture: {fileID: 2800000, guid: 7876b3eafa2f8c94a981bf794478d779, type: 3}
   localMaskChannel: 0
   shaderKeyword: 
   hash:
@@ -1308,8 +1290,8 @@ MonoBehaviour:
   interval: 0
   async: 1
   downsampleSteps: 3
-  registeredPaintableTexture: {fileID: 0}
-  cooldown: -69.39222
+  registeredPaintableTexture: {fileID: 507290607}
+  cooldown: -167.59117
   currentReader:
     requested: 0
     buffer: {fileID: 0}
@@ -1321,7 +1303,7 @@ MonoBehaviour:
   currentDirty: 1
   maskMesh: {fileID: 0}
   maskSubmesh: 0
-  maskTexture: {fileID: 2800000, guid: 2333a4f0e7adb704086b7808b9bad0c9, type: 3}
+  maskTexture: {fileID: 2800000, guid: 7876b3eafa2f8c94a981bf794478d779, type: 3}
   maskChannel: 3
   total: 0
   maskDirty: 0
@@ -1334,7 +1316,7 @@ MonoBehaviour:
     downsampleBoost: 0
     tempTexture: {fileID: 0}
   threshold: 0.1
-  texture: {fileID: 2800000, guid: 2333a4f0e7adb704086b7808b9bad0c9, type: 3}
+  texture: {fileID: 2800000, guid: 7876b3eafa2f8c94a981bf794478d779, type: 3}
   color: {r: 0, g: 0, b: 0, a: 1}
   count: 0
   changeDirty: 0
@@ -1472,12 +1454,20 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 318602556637840439, guid: 25cb4c636ff89de49ac6fdbe34082629, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 631841889919723927, guid: 25cb4c636ff89de49ac6fdbe34082629, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 679625861135456366, guid: 25cb4c636ff89de49ac6fdbe34082629, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 679625861135456366, guid: 25cb4c636ff89de49ac6fdbe34082629, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 80605aebae01bf94b9aca7bd0c0e1a58, type: 2}
     - target: {fileID: 1645226507166031211, guid: 25cb4c636ff89de49ac6fdbe34082629, type: 3}
       propertyPath: m_Convex
       value: 1
@@ -1498,13 +1488,21 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 1.308
       objectReference: {fileID: 0}
+    - target: {fileID: 3069693306972710553, guid: 25cb4c636ff89de49ac6fdbe34082629, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3069693306972710553, guid: 25cb4c636ff89de49ac6fdbe34082629, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 80605aebae01bf94b9aca7bd0c0e1a58, type: 2}
     - target: {fileID: 3206777887335896680, guid: 25cb4c636ff89de49ac6fdbe34082629, type: 3}
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 3848539183296852650, guid: f10abc8f055f35b4d9bd6fba7aee57f6, type: 2}
     - target: {fileID: 3483268232498011840, guid: 25cb4c636ff89de49ac6fdbe34082629, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3497217065115900271, guid: 25cb4c636ff89de49ac6fdbe34082629, type: 3}
       propertyPath: m_Name
@@ -1576,8 +1574,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4911032913977275827, guid: 25cb4c636ff89de49ac6fdbe34082629, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4956340374712612711, guid: 25cb4c636ff89de49ac6fdbe34082629, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4956340374712612711, guid: 25cb4c636ff89de49ac6fdbe34082629, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 80605aebae01bf94b9aca7bd0c0e1a58, type: 2}
     - target: {fileID: 5443829364384307338, guid: 25cb4c636ff89de49ac6fdbe34082629, type: 3}
       propertyPath: m_LocalScale.y
       value: 1.1468945
@@ -1588,15 +1594,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5641338954681570804, guid: 25cb4c636ff89de49ac6fdbe34082629, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7486904393963078882, guid: 25cb4c636ff89de49ac6fdbe34082629, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7528664128881656372, guid: 25cb4c636ff89de49ac6fdbe34082629, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8229189527361236457, guid: 25cb4c636ff89de49ac6fdbe34082629, type: 3}
       propertyPath: m_LocalScale.y
@@ -2843,7 +2849,7 @@ MonoBehaviour:
   - m_Script
   m_LockStageInInspector: 
   m_StreamingVersion: 20170927
-  m_Priority: 2
+  m_Priority: 4
   m_StandbyUpdate: 2
   m_LookAt: {fileID: 0}
   m_Follow: {fileID: 0}
@@ -3413,11 +3419,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1312792174}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!137 &1321943912 stripped
-SkinnedMeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 573598812882544231, guid: f2158560a6511bf4587b0320eef25a07, type: 3}
-  m_PrefabInstance: {fileID: 851626911}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1344333812
 GameObject:
   m_ObjectHideFlags: 0
@@ -3650,7 +3651,7 @@ MonoBehaviour:
   wrapV: -1
   existing: 2
   conversion: 0
-  localMaskTexture: {fileID: 2800000, guid: 2333a4f0e7adb704086b7808b9bad0c9, type: 3}
+  localMaskTexture: {fileID: 2800000, guid: 7876b3eafa2f8c94a981bf794478d779, type: 3}
   localMaskChannel: 0
   shaderKeyword: 
   hash:
@@ -3737,7 +3738,7 @@ MonoBehaviour:
   wrapV: -1
   existing: 2
   conversion: 0
-  localMaskTexture: {fileID: 2800000, guid: 2333a4f0e7adb704086b7808b9bad0c9, type: 3}
+  localMaskTexture: {fileID: 2800000, guid: 7876b3eafa2f8c94a981bf794478d779, type: 3}
   localMaskChannel: 0
   shaderKeyword: 
   hash:
@@ -3782,8 +3783,8 @@ MonoBehaviour:
   interval: 0
   async: 1
   downsampleSteps: 3
-  registeredPaintableTexture: {fileID: 0}
-  cooldown: -99.04246
+  registeredPaintableTexture: {fileID: 1441630826}
+  cooldown: -150.62393
   currentReader:
     requested: 0
     buffer: {fileID: 0}
@@ -3795,7 +3796,7 @@ MonoBehaviour:
   currentDirty: 1
   maskMesh: {fileID: 0}
   maskSubmesh: 0
-  maskTexture: {fileID: 2800000, guid: 2333a4f0e7adb704086b7808b9bad0c9, type: 3}
+  maskTexture: {fileID: 2800000, guid: 7876b3eafa2f8c94a981bf794478d779, type: 3}
   maskChannel: 3
   total: 0
   maskDirty: 0
@@ -3808,7 +3809,7 @@ MonoBehaviour:
     downsampleBoost: 0
     tempTexture: {fileID: 0}
   threshold: 0.1
-  texture: {fileID: 2800000, guid: 2333a4f0e7adb704086b7808b9bad0c9, type: 3}
+  texture: {fileID: 2800000, guid: 7876b3eafa2f8c94a981bf794478d779, type: 3}
   color: {r: 0, g: 0, b: 0, a: 1}
   count: 0
   changeDirty: 0
@@ -4490,6 +4491,71 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 26
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1799208859
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: d1f4af89ff804354e8d7b2b77c169b8e, type: 3}
+      propertyPath: m_RootOrder
+      value: 27
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d1f4af89ff804354e8d7b2b77c169b8e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d1f4af89ff804354e8d7b2b77c169b8e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.21
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d1f4af89ff804354e8d7b2b77c169b8e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 17.29
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d1f4af89ff804354e8d7b2b77c169b8e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d1f4af89ff804354e8d7b2b77c169b8e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d1f4af89ff804354e8d7b2b77c169b8e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d1f4af89ff804354e8d7b2b77c169b8e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d1f4af89ff804354e8d7b2b77c169b8e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d1f4af89ff804354e8d7b2b77c169b8e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d1f4af89ff804354e8d7b2b77c169b8e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: d1f4af89ff804354e8d7b2b77c169b8e, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d1f4af89ff804354e8d7b2b77c169b8e, type: 3}
+      propertyPath: m_Name
+      value: Sand Art Tool
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d1f4af89ff804354e8d7b2b77c169b8e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d1f4af89ff804354e8d7b2b77c169b8e, type: 3}
 --- !u!1 &1820919435 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 35c1f4a96c31d78499a100614b1c34a2, type: 3}
@@ -5296,6 +5362,79 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1995466379}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1001 &2035072220
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 1344756108affeb4d82a234fb46afabd, type: 3}
+      propertyPath: m_RootOrder
+      value: 28
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 1344756108affeb4d82a234fb46afabd, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.61586
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 1344756108affeb4d82a234fb46afabd, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.61586
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 1344756108affeb4d82a234fb46afabd, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.61586
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 1344756108affeb4d82a234fb46afabd, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 1344756108affeb4d82a234fb46afabd, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 8.6
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 1344756108affeb4d82a234fb46afabd, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 15.33
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 1344756108affeb4d82a234fb46afabd, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.99891436
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 1344756108affeb4d82a234fb46afabd, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.046584457
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 1344756108affeb4d82a234fb46afabd, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 1344756108affeb4d82a234fb46afabd, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 1344756108affeb4d82a234fb46afabd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -5.34
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 1344756108affeb4d82a234fb46afabd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 1344756108affeb4d82a234fb46afabd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1344756108affeb4d82a234fb46afabd, type: 3}
+      propertyPath: m_Name
+      value: 'funnel '
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1344756108affeb4d82a234fb46afabd, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1344756108affeb4d82a234fb46afabd, type: 3}
 --- !u!1 &2062303863
 GameObject:
   m_ObjectHideFlags: 3
@@ -5567,7 +5706,7 @@ MonoBehaviour:
   wrapV: -1
   existing: 2
   conversion: 0
-  localMaskTexture: {fileID: 2800000, guid: 2333a4f0e7adb704086b7808b9bad0c9, type: 3}
+  localMaskTexture: {fileID: 2800000, guid: 7876b3eafa2f8c94a981bf794478d779, type: 3}
   localMaskChannel: 0
   shaderKeyword: 
   hash:
@@ -5611,7 +5750,7 @@ MonoBehaviour:
   wrapV: -1
   existing: 2
   conversion: 0
-  localMaskTexture: {fileID: 2800000, guid: 2333a4f0e7adb704086b7808b9bad0c9, type: 3}
+  localMaskTexture: {fileID: 2800000, guid: 7876b3eafa2f8c94a981bf794478d779, type: 3}
   localMaskChannel: 0
   shaderKeyword: 
   hash:
@@ -5642,8 +5781,8 @@ MonoBehaviour:
   interval: 0
   async: 1
   downsampleSteps: 3
-  registeredPaintableTexture: {fileID: 0}
-  cooldown: -102.46931
+  registeredPaintableTexture: {fileID: 2128552752}
+  cooldown: -135.81476
   currentReader:
     requested: 0
     buffer: {fileID: 0}
@@ -5655,7 +5794,7 @@ MonoBehaviour:
   currentDirty: 1
   maskMesh: {fileID: 0}
   maskSubmesh: 0
-  maskTexture: {fileID: 2800000, guid: 2333a4f0e7adb704086b7808b9bad0c9, type: 3}
+  maskTexture: {fileID: 2800000, guid: 7876b3eafa2f8c94a981bf794478d779, type: 3}
   maskChannel: 3
   total: 0
   maskDirty: 0
@@ -5668,7 +5807,7 @@ MonoBehaviour:
     downsampleBoost: 0
     tempTexture: {fileID: 0}
   threshold: 0.1
-  texture: {fileID: 2800000, guid: 2333a4f0e7adb704086b7808b9bad0c9, type: 3}
+  texture: {fileID: 2800000, guid: 7876b3eafa2f8c94a981bf794478d779, type: 3}
   color: {r: 0, g: 0, b: 0, a: 1}
   count: 0
   changeDirty: 0

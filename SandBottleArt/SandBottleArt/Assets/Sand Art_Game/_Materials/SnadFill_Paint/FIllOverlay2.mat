@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Fill_05
-  m_Shader: {fileID: 4800000, guid: 07fb39578353b0246a6143b4a4284261, type: 3}
+  m_Name: FIllOverlay2
+  m_Shader: {fileID: 4800000, guid: 5944565070a0ab4479b5c2b901a7d8a2, type: 3}
   m_ShaderKeywords: _EMISSION _GLOSSYREFLECTIONS_OFF _NORMALMAP _SPECULARHIGHLIGHTS_OFF
   m_LightmapFlags: 0
   m_EnableInstancingVariants: 0
@@ -24,7 +24,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BaseMap:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 568908dfb522d84438e029951306db83, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
@@ -45,7 +45,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
         m_Texture: {fileID: 0}
-        m_Scale: {x: 10, y: 5}
+        m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 2800000, guid: d5378576259831445afe8e45289a8b03, type: 3}
@@ -94,8 +94,8 @@ Material:
     - _ZWrite: 1
     - __dirty: 1
     m_Colors:
-    - _BaseColor: {r: 0.39725396, g: 0.6698113, b: 0.21800463, a: 1}
-    - _Color: {r: 0.5376661, g: 0.972549, b: 0.25098044, a: 1}
-    - _EmissionColor: {r: 0.15365857, g: 0.5943396, b: 0.025231387, a: 1}
-    - _Tiling: {r: 10, g: 5, b: 0, a: 0}
+    - _BaseColor: {r: 1, g: 1, b: 1, a: 0}
+    - _Color: {r: 0.9056604, g: 0.44001427, b: 0.7801755, a: 1}
+    - _EmissionColor: {r: 0.5754717, g: 0.21987364, b: 0.21987364, a: 1}
+    - _Tiling: {r: 1, g: 1, b: 0, a: 0}
   m_BuildTextureStacks: []

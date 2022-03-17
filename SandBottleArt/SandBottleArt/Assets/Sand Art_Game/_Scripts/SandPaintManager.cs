@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using PaintIn3D;
-
+using System.Linq;
+using NaughtyAttributes;
 [System.Serializable]
 public class SandPaintStep
 {
@@ -35,6 +36,8 @@ public class SandPaint
     public CounterStep[] counters;
     
     public float paintedMax;
+    public Renderer[] outlineRend;
+    public Material outlineMaterial;
     public float timeDelay
     {
         get{
@@ -54,6 +57,9 @@ public class SandPaintManager : MonoBehaviour
 
     public GameObject paint;
 
+    public GameObject tool;
+    [Foldout("Reference")]
+    public GameObject funnel;
     public SandPaint currentStep
     {
         get
@@ -94,16 +100,27 @@ public class SandPaintManager : MonoBehaviour
         currentStep.startPos = currentStep.rend.transform.position;
         currentStep.rend.gameObject.SetActive(true);
         SetSandColor();
+        Outline();
     }
 
     void Update() {
 
         if(currentStepIndex >= sandPaint.Length) {return;}
-
         SetInput();
         FillSand();
     }
 
+    void Outline()
+    {
+        for(int i = 0; i<currentStep.outlineRend.Length; i++)
+        {
+            // List<Material> mat = currentStep.outlineRend[i].materials.ToList();
+            // mat.Add(currentStep.outlineMaterial);
+            // currentStep.outlineRend[i].materials = mat.ToArray();
+            Color black = Color.black;
+            currentStep.outlineRend[i].materials[1].SetColor("_BaseColor", black);
+        }
+    }
     void SetInput()
     {
         if(Input.GetMouseButtonDown(0))
@@ -141,6 +158,8 @@ public class SandPaintManager : MonoBehaviour
                     MouseDown = false;
                     toFill = false;
                     paint.SetActive(true);
+                    funnel.SetActive(false);
+                    tool.GetComponent<MeshRenderer>().enabled = true;
                 }
             }
             else{
@@ -157,18 +176,21 @@ public class SandPaintManager : MonoBehaviour
                 float weight = sum;
                 //float weight = Remap.remap(count,currentStep.counter.Total,currentStep.paintedMax,100,0,false,false,false,false);
                 float lerpValue = Remap.remap(weight, 0, 100, 0, 1,false,false,false,false);
-                currentStep.rend.transform.position = Vector3.Lerp(currentStep.fillLerpPos.position, currentStep.startPos, lerpValue);
+                //currentStep.rend.transform.position = Vector3.Lerp(currentStep.fillLerpPos.position, currentStep.startPos, lerpValue);
                 float blendWeight = Remap.remap(weight, 0, 100, 100, 0,false,false,false,false);
                 currentStep.rend.SetBlendShapeWeight(0,blendWeight);
 
                 if(weight >=100)
                 {
+                    currentStep.rend.transform.position = currentStep.startPos;
                     currentStep.empty.completed = true;
                     MouseDown = false;
                     toFill = false;
                     this.enabled = false;
                     GetComponent<GameManager>().enabled = true;
-                    CameraController.instance.SetCurrentCamera(Cameras.camera1);
+                    funnel.SetActive(true);
+                    tool.GetComponent<MeshRenderer>().enabled = false;
+                    //CameraController.instance.SetCurrentCamera(Cameras.camera1);
                 }
 
                 // float weight = currentStep.rend.GetBlendShapeWeight(0);

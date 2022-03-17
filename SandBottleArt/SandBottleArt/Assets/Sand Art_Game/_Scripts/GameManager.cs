@@ -11,6 +11,8 @@ public class SandStep{
     public float fillTimeDelay;
 
     public bool toDraw;
+
+    public GameObject outline;
 }
 
 public class GameManager : MonoBehaviour
@@ -34,6 +36,8 @@ public class GameManager : MonoBehaviour
             }
         }
     }
+
+    
 
     [Foldout("Floats")]
     public float increaseSpeed;
@@ -60,6 +64,10 @@ public class GameManager : MonoBehaviour
     int currentStepIndex;
 
     void OnEnable() {
+
+        if(currentStepIndex >= gameSteps.Length) {return;}
+
+        SetOutline();
         SetSandColor();
     }
 
@@ -152,6 +160,19 @@ public class GameManager : MonoBehaviour
 
     }
 
+    void SetOutline()
+    {
+        if(currentStep.outline != null)
+        {
+            currentStep.outline.SetActive(true);
+        }
+        if(currentStepIndex==0) {return;}
+
+        gameSteps[currentStepIndex-1].outline.SetActive(false);
+
+
+    }
+
     void ToggleParticles(bool status)
     {
 
@@ -183,6 +204,7 @@ public class GameManager : MonoBehaviour
 
         if(currentStep.toDraw)
         {
+            currentStep.outline.SetActive(false);
             this.enabled = false;
             GetComponent<SandPaintManager>().enabled = true;
             CameraController.instance.SetCurrentCamera(Cameras.camera2);
@@ -191,6 +213,7 @@ public class GameManager : MonoBehaviour
         else{
             currentStepIndex++;
             SetSandColor();
+            SetOutline();
         }
         
         

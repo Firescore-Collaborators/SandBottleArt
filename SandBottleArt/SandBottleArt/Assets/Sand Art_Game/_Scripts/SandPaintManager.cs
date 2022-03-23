@@ -4,6 +4,7 @@ using UnityEngine;
 using PaintIn3D;
 using System.Linq;
 using NaughtyAttributes;
+
 [System.Serializable]
 public class SandPaintStep
 {
@@ -60,6 +61,8 @@ public class SandPaintManager : MonoBehaviour
     public GameObject tool;
     [Foldout("Reference")]
     public GameObject funnel;
+
+    public Color outlineDisappear;
     public SandPaint currentStep
     {
         get
@@ -100,7 +103,6 @@ public class SandPaintManager : MonoBehaviour
         currentStep.startPos = currentStep.rend.transform.position;
         currentStep.rend.gameObject.SetActive(true);
         SetSandColor();
-        Outline();
     }
 
     void Update() {
@@ -117,7 +119,7 @@ public class SandPaintManager : MonoBehaviour
             // List<Material> mat = currentStep.outlineRend[i].materials.ToList();
             // mat.Add(currentStep.outlineMaterial);
             // currentStep.outlineRend[i].materials = mat.ToArray();
-            Color black = Color.black;
+            Color black = Color.white;
             currentStep.outlineRend[i].materials[1].SetColor("_BaseColor", black);
         }
     }
@@ -160,10 +162,14 @@ public class SandPaintManager : MonoBehaviour
                     paint.SetActive(true);
                     funnel.SetActive(false);
                     tool.GetComponent<MeshRenderer>().enabled = true;
+                    Outline();
                 }
             }
             else{
-                float sum = 0;
+
+                
+
+                /*float sum = 0;
                 for(int i = 0; i < currentStep.counters.Length; i++)
                 {
                     currentStep.counters[i].percentComplete = Remap.remap(currentStep.counters[i].counter.Count, currentStep.counters[i].counter.Total, currentStep.counters[i].count, 0, 100,false,false,false,false);
@@ -190,8 +196,13 @@ public class SandPaintManager : MonoBehaviour
                     GetComponent<GameManager>().enabled = true;
                     funnel.SetActive(true);
                     tool.GetComponent<MeshRenderer>().enabled = false;
+                    for(int i = 0; i<currentStep.outlineRend.Length; i++)
+                    {
+                        currentStep.outlineRend[i].materials[1].SetColor("_BaseColor", outlineDisappear);
+                    }
                     //CameraController.instance.SetCurrentCamera(Cameras.camera1);
                 }
+                */
 
                 // float weight = currentStep.rend.GetBlendShapeWeight(0);
                 // weight -= increaseSpeed * Time.deltaTime;

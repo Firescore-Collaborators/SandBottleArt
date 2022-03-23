@@ -8,6 +8,7 @@ public class SandStep{
 
     public SkinnedMeshRenderer rend;
     public Color sandColor;
+    public Color emissionColor;
     public float fillTimeDelay;
 
     public bool toDraw;
@@ -148,11 +149,13 @@ public class GameManager : MonoBehaviour
 
     }
 
+    [Button]
     void SetSandColor()
     {
         //Assing Mesh Color
         //currentStep.rend.material.SetColor("_BaseColor", currentStep.sandColor);
         currentStep.rend.material.SetColor("_BaseColor", currentStep.sandColor);
+        currentStep.rend.material.SetColor("_EmissionColor", currentStep.emissionColor);
 
         // Assign particle Color
         ParticleSystem.MainModule main = sandParticles.main;

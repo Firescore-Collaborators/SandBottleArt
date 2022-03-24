@@ -51,6 +51,14 @@ public class SandPaint
 public class SandPaintManager : MonoBehaviour
 {
     public SandPaint[] sandPaint;
+
+    [Foldout("Events")]
+    public DefaultGameEvent drawStart;
+    [Foldout("Events")]
+    public DefaultGameEvent drawEnd;
+
+    [Foldout("MeshManipulate")]
+    public ManipulateNailBlob meshManipulate;
     public bool mousedown;
     public bool toFill;
     public float increaseSpeed;
@@ -159,15 +167,15 @@ public class SandPaintManager : MonoBehaviour
                     currentStep.fill.completed = true;
                     MouseDown = false;
                     toFill = false;
-                    paint.SetActive(true);
+                    //paint.SetActive(true);
                     funnel.SetActive(false);
                     tool.GetComponent<MeshRenderer>().enabled = true;
-                    Outline();
+                    //Outline();
+                    drawStart.Raise();
                 }
             }
             else{
 
-                
 
                 /*float sum = 0;
                 for(int i = 0; i < currentStep.counters.Length; i++)
@@ -181,7 +189,6 @@ public class SandPaintManager : MonoBehaviour
 
                 float weight = sum;
                 //float weight = Remap.remap(count,currentStep.counter.Total,currentStep.paintedMax,100,0,false,false,false,false);
-                float lerpValue = Remap.remap(weight, 0, 100, 0, 1,false,false,false,false);
                 //currentStep.rend.transform.position = Vector3.Lerp(currentStep.fillLerpPos.position, currentStep.startPos, lerpValue);
                 float blendWeight = Remap.remap(weight, 0, 100, 100, 0,false,false,false,false);
                 currentStep.rend.SetBlendShapeWeight(0,blendWeight);
@@ -215,6 +222,24 @@ public class SandPaintManager : MonoBehaviour
                 //     MouseDown = false;
                 //     toFill = false;
                 // }
+
+                float blendWeight = Remap.remap(meshManipulate.CalculatePercantage(), 0, 1, 100, 0,false,false,false,false);
+                currentStep.rend.SetBlendShapeWeight(0,blendWeight);
+                //currentStep.rend.transform.position = Vector3.Lerp(currentStep.fillLerpPos.position, currentStep.startPos, meshManipulate.CalculatePercantage());
+
+                if(meshManipulate.CalculatePercantage()>=meshManipulate._autocompletePercentage)
+                {
+                    currentStep.rend.transform.position = currentStep.startPos;
+                    currentStep.rend.SetBlendShapeWeight(0,0);
+                    currentStep.empty.completed = true;
+                    mousedown = false;
+                    toFill = false;
+                    GetComponent<GameManager>().enabled = true;
+                    funnel.SetActive(true);
+                    tool.GetComponent<MeshRenderer>().enabled = false;
+                    this.enabled = false;
+                    drawEnd.RaiseDelay(1.0f);
+                }
             }
 
             if(currentStep.fill.completed && currentStep.empty.completed)

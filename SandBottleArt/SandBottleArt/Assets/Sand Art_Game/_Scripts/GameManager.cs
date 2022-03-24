@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using NaughtyAttributes;
 
 [System.Serializable]
@@ -38,7 +39,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    
+    [Foldout("References")]
+    public GameObject sandFillPanel;
+
+    [Foldout("Events")]
+    public DefaultGameEvent fillOver;
 
     [Foldout("Floats")]
     public float increaseSpeed;
@@ -68,6 +73,7 @@ public class GameManager : MonoBehaviour
 
         if(currentStepIndex >= gameSteps.Length) {return;}
 
+        sandFillPanel.SetActive(true);
         SetOutline();
         SetSandColor();
     }
@@ -83,6 +89,8 @@ public class GameManager : MonoBehaviour
 
     void SetInput()
     {
+
+        if(EventSystem.current.IsPointerOverGameObject()) {return;}
         if(Input.GetMouseButtonDown(0))
         {
             MouseDown = true;
@@ -171,7 +179,7 @@ public class GameManager : MonoBehaviour
         }
         if(currentStepIndex==0) {return;}
 
-        gameSteps[currentStepIndex-1].outline.SetActive(false);
+        //gameSteps[currentStepIndex-1].outline.SetActive(false);
 
 
     }
@@ -192,7 +200,7 @@ public class GameManager : MonoBehaviour
     void SwitchMesh()
     {
         //Switching Mesh to Paint
-        currentStep.rend.gameObject.SetActive(false);
+        /*currentStep.rend.gameObject.SetActive(false);
 
         //Assign Color
         Material[] mats = paintObject[currentStepIndex].materials;
@@ -202,6 +210,7 @@ public class GameManager : MonoBehaviour
         }
         paintObject[currentStepIndex].materials = mats;
         paintObject[currentStepIndex].gameObject.SetActive(true);
+        */
 
         //Check if we should draw 
 
@@ -214,7 +223,14 @@ public class GameManager : MonoBehaviour
             currentStepIndex++;
         }
         else{
+            gameSteps[currentStepIndex].outline.SetActive(false);
             currentStepIndex++;
+            
+            if(currentStepIndex >= gameSteps.Length) {
+                fillOver.Raise();    
+                return;
+            }
+            sandFillPanel.SetActive(true);
             SetSandColor();
             SetOutline();
         }

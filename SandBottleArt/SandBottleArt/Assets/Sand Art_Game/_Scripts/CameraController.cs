@@ -8,6 +8,7 @@ public enum Cameras
 {
     camera1,
     camera2,
+    camera3
 }
 
 public class CameraController : MonoBehaviour
@@ -16,6 +17,7 @@ public class CameraController : MonoBehaviour
     public Cameras currentCam;
     [SerializeField] CinemachineVirtualCamera camera1;
     [SerializeField] CinemachineVirtualCamera camera2;
+    [SerializeField] CinemachineVirtualCamera camera3;
 
     public List<CinemachineVirtualCamera> cameras = new List<CinemachineVirtualCamera> ();
 
@@ -73,9 +75,11 @@ public class CameraController : MonoBehaviour
             case Cameras.camera1:
                 camera1.Priority = 2;
                 break;
-
             case Cameras.camera2:
                 camera2.Priority = 2;
+                break;
+            case Cameras.camera3:
+                camera3.Priority = 2;
                 break;
         }
 

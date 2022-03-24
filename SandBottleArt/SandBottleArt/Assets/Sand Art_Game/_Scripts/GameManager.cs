@@ -42,8 +42,17 @@ public class GameManager : MonoBehaviour
     [Foldout("References")]
     public GameObject sandFillPanel;
 
+    [Foldout("References")]
+    public GameObject cork;
+
+    [Foldout("Transform")]
+    public Transform corklerpTransform;
+
+
     [Foldout("Events")]
     public DefaultGameEvent fillOver;
+    [Foldout("Events")]
+    public DefaultGameEvent corkPlaced;
 
     [Foldout("Floats")]
     public float increaseSpeed;
@@ -55,6 +64,8 @@ public class GameManager : MonoBehaviour
 
     [Foldout("EFX")]
     public ParticleSystem sandParticles;
+
+    ObjectFollowMouse corkFollow;
 
     bool MouseDown{
         set{
@@ -81,7 +92,10 @@ public class GameManager : MonoBehaviour
     public void Update()
     {
         //Check if we are at the last step
-        if(currentStepIndex >= gameSteps.Length) {return;}
+        if(currentStepIndex >= gameSteps.Length) {
+            CorkInput();    
+            return;
+        }
 
         SetInput();
         FillSand();
@@ -105,6 +119,29 @@ public class GameManager : MonoBehaviour
             Timer.Delay(currentStep.fillTimeDelay, () => {
                 toFill = false;
             });
+        }
+
+    }
+
+    void CorkInput()
+    {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+        if(Physics.Raycast(ray,out RaycastHit hit, 100, LayerMask.GetMask("Cork")))
+        {
+            if(Input.GetMouseButtonDown(0))
+            {
+                corkFollow = hit.transform.GetComponent<ObjectFollowMouse>();
+                corkFollow.enabled = true;
+            }
+        }
+
+        if(Input.GetMouseButtonUp(0))
+        {
+            if(corkFollow != null)
+            {
+                corkFollow.enabled = false;
+            }
         }
     }
 
@@ -225,7 +262,7 @@ public class GameManager : MonoBehaviour
         else{
             gameSteps[currentStepIndex].outline.SetActive(false);
             currentStepIndex++;
-            
+
             if(currentStepIndex >= gameSteps.Length) {
                 fillOver.Raise();    
                 return;
@@ -246,5 +283,14 @@ public class GameManager : MonoBehaviour
         {
             paintObject.Add(paintParent.transform.GetChild(i).gameObject.GetComponent<MeshRenderer>());
         }
+    }
+
+    public void LerpCork()
+    {
+        cork.tag = "Untagged";
+        LerpObjectPosition.instance.LerpObject(cork.transform,corklerpTransform.position,0.75f,()=>
+        {
+            corkPlaced.Raise();
+        });
     }
 }

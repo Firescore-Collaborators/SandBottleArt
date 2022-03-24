@@ -156,14 +156,15 @@ public class SandPaintManager : MonoBehaviour
             if(!currentStep.fill.completed)
             {
                 float weight = currentStep.rend.GetBlendShapeWeight(0);
-                weight += increaseSpeed * Time.deltaTime;
+                weight -= increaseSpeed * Time.deltaTime;
                 weight = Mathf.Clamp(weight, 0, 100);
+                //float remapValue = Remap.remap(weight,0,100,100,0,false,false,false,false);
                 currentStep.rend.SetBlendShapeWeight(0, weight);
-                float lerpValue = Remap.remap(weight, 0, 100, 0, 1,false,false,false,false);
-                currentStep.rend.transform.position = Vector3.Lerp(currentStep.startPos, currentStep.fillLerpPos.position, lerpValue);
-                if(weight >= currentStep.fill.endValue)
+                //float lerpValue = Remap.remap(weight, 0, 100, 0, 1,false,false,false,false);
+                //currentStep.rend.transform.position = Vector3.Lerp(currentStep.startPos, currentStep.fillLerpPos.position, lerpValue);
+                if(weight <= currentStep.fill.endValue)
                 {
-                    currentStep.rend.SetBlendShapeWeight(0, 100);
+                    currentStep.rend.SetBlendShapeWeight(0, 0);
                     currentStep.fill.completed = true;
                     MouseDown = false;
                     toFill = false;
@@ -223,13 +224,13 @@ public class SandPaintManager : MonoBehaviour
                 //     toFill = false;
                 // }
 
-                float blendWeight = Remap.remap(meshManipulate.CalculatePercantage(), 0, 1, 100, 0,false,false,false,false);
-                currentStep.rend.SetBlendShapeWeight(0,blendWeight);
+                float blendWeight = Remap.remap(meshManipulate.CalculatePercantage(), 0, 1, 0, 100,false,false,false,false);
+                currentStep.rend.SetBlendShapeWeight(1,blendWeight);
                 //currentStep.rend.transform.position = Vector3.Lerp(currentStep.fillLerpPos.position, currentStep.startPos, meshManipulate.CalculatePercantage());
 
                 if(meshManipulate.CalculatePercantage()>=meshManipulate._autocompletePercentage)
                 {
-                    currentStep.rend.transform.position = currentStep.startPos;
+                    //currentStep.rend.transform.position = currentStep.startPos;
                     currentStep.rend.SetBlendShapeWeight(0,0);
                     currentStep.empty.completed = true;
                     mousedown = false;
@@ -275,4 +276,7 @@ public class SandPaintManager : MonoBehaviour
             sandParticles.Stop();
         }
     }
+
+
+    
 }

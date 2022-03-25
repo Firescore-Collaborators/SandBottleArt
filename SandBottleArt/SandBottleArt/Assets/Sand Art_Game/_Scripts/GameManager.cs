@@ -104,7 +104,7 @@ public class GameManager : MonoBehaviour
     void SetInput()
     {
 
-        if(EventSystem.current.IsPointerOverGameObject()) {return;}
+        if(!EventSystem.current.IsPointerOverGameObject()) {return;}
         if(Input.GetMouseButtonDown(0))
         {
             MouseDown = true;

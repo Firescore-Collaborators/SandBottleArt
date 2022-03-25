@@ -8,16 +8,19 @@ public enum Cameras
 {
     camera1,
     camera2,
-    camera3
+    camera3,
+    camera4,
 }
 
 public class CameraController : MonoBehaviour
 {
     public static CameraController instance;
+    public DefaultGameEvent gameStart;
     public Cameras currentCam;
     [SerializeField] CinemachineVirtualCamera camera1;
     [SerializeField] CinemachineVirtualCamera camera2;
     [SerializeField] CinemachineVirtualCamera camera3;
+    [SerializeField] CinemachineVirtualCamera camera4;
 
     public List<CinemachineVirtualCamera> cameras = new List<CinemachineVirtualCamera> ();
 
@@ -42,6 +45,11 @@ public class CameraController : MonoBehaviour
         //     SetCurrentCamera(Cameras.zoomIn);
         // });
         brain = Camera.main.GetComponent<CinemachineBrain>();
+        Timer.Delay(0.5f,()=>
+        {
+            SetCurrentCamera(Cameras.camera1);
+            gameStart.RaiseDelay(2.0f);
+        });
     }
 
     private void Update() {
@@ -80,6 +88,9 @@ public class CameraController : MonoBehaviour
                 break;
             case Cameras.camera3:
                 camera3.Priority = 2;
+                break;
+            case Cameras.camera4:
+                camera4.Priority = 2;
                 break;
         }
 

@@ -10,6 +10,7 @@ public enum Cameras
     camera2,
     camera3,
     camera4,
+    camera5
 }
 
 public class CameraController : MonoBehaviour
@@ -21,6 +22,7 @@ public class CameraController : MonoBehaviour
     [SerializeField] CinemachineVirtualCamera camera2;
     [SerializeField] CinemachineVirtualCamera camera3;
     [SerializeField] CinemachineVirtualCamera camera4;
+    [SerializeField] CinemachineVirtualCamera camera5;
 
     public List<CinemachineVirtualCamera> cameras = new List<CinemachineVirtualCamera> ();
 
@@ -47,7 +49,7 @@ public class CameraController : MonoBehaviour
         brain = Camera.main.GetComponent<CinemachineBrain>();
         Timer.Delay(0.5f,()=>
         {
-            SetCurrentCamera(Cameras.camera1);
+            SetCurrentCamera(Cameras.camera2);
             gameStart.RaiseDelay(2.0f);
         });
     }
@@ -91,6 +93,9 @@ public class CameraController : MonoBehaviour
                 break;
             case Cameras.camera4:
                 camera4.Priority = 2;
+                break;
+            case Cameras.camera5:
+                camera5.Priority = 2;
                 break;
         }
 

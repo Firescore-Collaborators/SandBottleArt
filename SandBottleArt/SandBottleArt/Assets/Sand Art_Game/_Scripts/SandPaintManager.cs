@@ -140,13 +140,13 @@ public class SandPaintManager : MonoBehaviour
                 toFill = true;
             });
         }
-        else if(Input.GetMouseButtonUp(0))
+        /*else if(Input.GetMouseButtonUp(0))
         {
             MouseDown = false;
             Timer.Delay(currentStep.timeDelay, () => {
                 toFill = false;
             });
-        }
+        }*/
     }
 
     async void FillSand()

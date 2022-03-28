@@ -5,6 +5,13 @@ using UnityEngine.EventSystems;
 using NaughtyAttributes;
 
 [System.Serializable]
+public class SandColor
+{
+    public Color color;
+    public Color emissionColor;
+}
+
+[System.Serializable]
 public class SandStep{
 
     public SkinnedMeshRenderer rend;
@@ -19,11 +26,15 @@ public class SandStep{
 
 public class GameManager : MonoBehaviour
 {
+
     public GameObject paintParent;
     [Foldout("Arrays")]
     public SandStep[] gameSteps;
     [Foldout("Arrays")]
     public List<MeshRenderer> paintObject = new List<MeshRenderer>();
+
+    [Foldout("Arrays")]
+    public SandColor[] sandColors;
     public SandStep currentStep
     {
         get
@@ -113,13 +124,13 @@ public class GameManager : MonoBehaviour
             });
         }
 
-        if(Input.GetMouseButtonUp(0))
+        /*if(Input.GetMouseButtonUp(0))
         {
             MouseDown = false;
             Timer.Delay(currentStep.fillTimeDelay, () => {
                 toFill = false;
             });
-        }
+        }*/
 
     }
 

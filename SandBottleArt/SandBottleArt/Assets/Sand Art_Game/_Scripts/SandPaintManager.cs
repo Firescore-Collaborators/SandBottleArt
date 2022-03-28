@@ -38,7 +38,8 @@ public class SandPaint
     
     public float paintedMax;
     public Renderer[] outlineRend;
-    public Material outlineMaterial;
+
+    public Material drawShape;    
     public float timeDelay
     {
         get{
@@ -110,7 +111,6 @@ public class SandPaintManager : MonoBehaviour
         paint.SetActive(false);
         currentStep.startPos = currentStep.rend.transform.position;
         currentStep.rend.gameObject.SetActive(true);
-        SetSandColor();
     }
 
     void Update() {
@@ -251,11 +251,18 @@ public class SandPaintManager : MonoBehaviour
         }
     }
 
+    public void SetColor(Color color)
+    {
+        if(!this.enabled) {return;}
+        currentStep.color = color;
+        SetSandColor();
+    }
     void SetSandColor()
     {
         //Assing Mesh Color
         //currentStep.rend.material.SetColor("_BaseColor", currentStep.color);
         currentStep.rend.material.color = currentStep.color;
+        currentStep.drawShape.color = currentStep.color;    
 
 
         // Assign particle Color

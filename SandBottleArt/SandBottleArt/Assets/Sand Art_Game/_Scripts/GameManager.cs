@@ -15,18 +15,14 @@ public class SandColor
 public class SandStep{
 
     public SkinnedMeshRenderer rend;
-    public Color sandColor;
-    public Color emissionColor;
     public float fillTimeDelay;
-
     public bool toDraw;
-
     public GameObject outline;
 }
 
 public class GameManager : MonoBehaviour
 {
-
+    public static GameManager instance;
     public GameObject paintParent;
     [Foldout("Arrays")]
     public SandStep[] gameSteps;
@@ -35,6 +31,11 @@ public class GameManager : MonoBehaviour
 
     [Foldout("Arrays")]
     public SandColor[] sandColors;
+
+    [Foldout("Arrays")]
+    public GameObject[] corks;
+
+    public SandColor currentSandColor;
     public SandStep currentStep
     {
         get
@@ -53,8 +54,6 @@ public class GameManager : MonoBehaviour
     [Foldout("References")]
     public GameObject sandFillPanel;
 
-    [Foldout("References")]
-    public GameObject cork;
 
     [Foldout("Transform")]
     public Transform corklerpTransform;
@@ -97,9 +96,20 @@ public class GameManager : MonoBehaviour
 
         sandFillPanel.SetActive(true);
         SetOutline();
-        SetSandColor();
+        UIElements.instance.SetButtonState(true);
+        //SetSandColor();
     }
 
+    void Awake()
+    {
+        if(instance == null)
+        {
+            instance = this;
+        }
+        else{
+            Destroy(this);
+        }    
+    }
     public void Update()
     {
         //Check if we are at the last step
@@ -196,6 +206,7 @@ public class GameManager : MonoBehaviour
     {
         toFill = false;
         MouseDown = false;
+        UIElements.instance.SetButtonState(true);
         ToggleParticles(false);
 
         SwitchMesh();
@@ -210,14 +221,21 @@ public class GameManager : MonoBehaviour
     {
         //Assing Mesh Color
         //currentStep.rend.material.SetColor("_BaseColor", currentStep.sandColor);
-        currentStep.rend.material.SetColor("_BaseColor", currentStep.sandColor);
-        currentStep.rend.material.SetColor("_EmissionColor", currentStep.emissionColor);
+        currentStep.rend.material.SetColor("_BaseColor", currentSandColor.color);
+        currentStep.rend.material.SetColor("_EmissionColor", currentSandColor.emissionColor);
 
         // Assign particle Color
         ParticleSystem.MainModule main = sandParticles.main;
-        main.startColor = currentStep.sandColor;
-
+        main.startColor = currentSandColor.color;
+        UIElements.instance.SetButtonState(false);
     }
+
+    public void SetCurrentColor(int index)
+    {
+        currentSandColor = sandColors[index];
+        SetSandColor();
+    }
+
 
     void SetOutline()
     {
@@ -279,7 +297,7 @@ public class GameManager : MonoBehaviour
                 return;
             }
             sandFillPanel.SetActive(true);
-            SetSandColor();
+            //SetSandColor();
             SetOutline();
         }
         
@@ -298,7 +316,8 @@ public class GameManager : MonoBehaviour
 
     public void LerpCork()
     {
-        cork.tag = "Untagged";
+        GameObject cork = corkFollow.gameObject;
+        cork.layer = 0;
         LerpObjectPosition.instance.LerpObject(cork.transform,corklerpTransform.position,0.75f,()=>
         {
             corkPlaced.Raise();

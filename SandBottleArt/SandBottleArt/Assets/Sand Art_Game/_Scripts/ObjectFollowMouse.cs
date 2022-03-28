@@ -23,7 +23,7 @@ public class ObjectFollowMouse : MonoBehaviour
         
         newPoint = ray.GetPoint(distance);
 
-        //offset = newPoint - transform.position ;
+        offset = newPoint - transform.position ;
     }
     void Start()
     {

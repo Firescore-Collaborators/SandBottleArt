@@ -7,7 +7,6 @@ public class CorkManager : MonoBehaviour
 {
     public List<GameObject> corks = new List<GameObject> ();
 
-
     void Start()
     {
         InitList();
@@ -29,5 +28,10 @@ public class CorkManager : MonoBehaviour
         {
             corks[i].SetActive(false);
         }
+    }
+
+    public void OnCork(int index)
+    {
+        corks[index].SetActive(true);
     }
 }

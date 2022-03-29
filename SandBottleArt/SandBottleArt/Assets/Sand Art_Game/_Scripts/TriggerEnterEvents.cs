@@ -13,6 +13,7 @@ public class TriggerEnterEvents : MonoBehaviour
     {
         if (tags.Contains (other.tag))
         {
+            other.gameObject.GetComponent<ObjectFollowMouse>().enabled = false;
             onTriggerEnter.Invoke ();
         }
     }

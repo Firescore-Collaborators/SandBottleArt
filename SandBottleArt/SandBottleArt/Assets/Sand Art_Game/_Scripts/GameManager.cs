@@ -53,6 +53,8 @@ public class GameManager : MonoBehaviour
 
     [Foldout("References")]
     public GameObject sandFillPanel;
+    [Foldout("References")]
+    public SkinnedMeshRenderer sandBottom;
 
 
     [Foldout("Transform")]
@@ -118,7 +120,7 @@ public class GameManager : MonoBehaviour
             return;
         }
 
-        SetInput();
+        //SetInput();
         FillSand();
     }
 
@@ -142,6 +144,15 @@ public class GameManager : MonoBehaviour
             });
         }*/
 
+    }  
+
+    public void MouseClick()
+    {
+        if(!this.enabled) {return;}
+        MouseDown = true;
+        Timer.Delay(currentStep.fillTimeDelay, () => {
+            toFill = true;
+        });
     }
 
     void CorkInput()
@@ -223,7 +234,11 @@ public class GameManager : MonoBehaviour
         //currentStep.rend.material.SetColor("_BaseColor", currentStep.sandColor);
         currentStep.rend.material.SetColor("_BaseColor", currentSandColor.color);
         currentStep.rend.material.SetColor("_EmissionColor", currentSandColor.emissionColor);
-
+        if(currentStepIndex==0)
+        {
+            sandBottom.material.SetColor("_BaseColor", currentSandColor.color);
+            sandBottom.material.SetColor("_EmissionColor", currentSandColor.emissionColor);
+        }
         // Assign particle Color
         ParticleSystem.MainModule main = sandParticles.main;
         main.startColor = currentSandColor.color;

@@ -13,6 +13,7 @@ public class UIElements : MonoBehaviour
     public Transform corkPanel;
     public Transform accPanel;
     public Button AccessoryButton;
+    public GameObject dropDown;
     List<Button> buttons = new List<Button>();
     List<Button> corks = new List<Button>();
     List<Button> accessories = new List<Button>();
@@ -44,7 +45,8 @@ public class UIElements : MonoBehaviour
             button.onClick.AddListener(()=>GameManager.instance.SetCurrentColor(button.transform.GetSiblingIndex()));
             Color color = sandPaint.GetComponent<GameManager>().sandColors[i].color;
             button.onClick.AddListener(()=>sandPaint.SetColor(color));
-
+            button.onClick.AddListener(()=>GameManager.instance.MouseClick());
+            button.onClick.AddListener(()=>sandPaint.MouseClick());
         }
         SetButtonState(true);
     }
@@ -58,6 +60,9 @@ public class UIElements : MonoBehaviour
             corks.Add(button);
             button.onClick.AddListener(()=>corkManager.OffAllCork());
             button.onClick.AddListener(()=>corkManager.OnCork(button.transform.GetSiblingIndex()));
+            button.onClick.AddListener(()=>{
+                dropDown.SetActive(true);
+            });
         }
     }
 

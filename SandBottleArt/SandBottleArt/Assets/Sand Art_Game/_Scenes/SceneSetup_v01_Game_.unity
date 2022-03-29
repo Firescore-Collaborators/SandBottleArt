@@ -874,6 +874,26 @@ MonoBehaviour:
     fillTimeDelay: 1
     toDraw: 0
     outline: {fileID: 226366080}
+  - rend: {fileID: 1032435799}
+    fillTimeDelay: 0.8
+    toDraw: 1
+    outline: {fileID: 907001143}
+  - rend: {fileID: 1032435798}
+    fillTimeDelay: 0.6
+    toDraw: 0
+    outline: {fileID: 2031022299}
+  - rend: {fileID: 1032435797}
+    fillTimeDelay: 0.4
+    toDraw: 0
+    outline: {fileID: 1966035652}
+  - rend: {fileID: 1032435796}
+    fillTimeDelay: 0.2
+    toDraw: 0
+    outline: {fileID: 1051674898}
+  - rend: {fileID: 1032435795}
+    fillTimeDelay: 0.2
+    toDraw: 0
+    outline: {fileID: 553148904}
   paintObject:
   - {fileID: 507290609}
   - {fileID: 2128552755}
@@ -3702,6 +3722,8 @@ MonoBehaviour:
   distance: 0
   cameraAxis: {x: 0, y: 0, z: 0}
   offset: {x: 0, y: 0, z: 0}
+  Yclamp: 1
+  offsetCal: 1
 --- !u!65 &844479596
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4694,6 +4716,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4f041a3fc97c443468b96c38bd1ef3eb, type: 3}
+--- !u!137 &1032435795 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 6672640111431302058, guid: 4f041a3fc97c443468b96c38bd1ef3eb, type: 3}
+  m_PrefabInstance: {fileID: 1032435794}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &1032435796 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 5663854652290420197, guid: 4f041a3fc97c443468b96c38bd1ef3eb, type: 3}
+  m_PrefabInstance: {fileID: 1032435794}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &1032435797 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 3586078110296385467, guid: 4f041a3fc97c443468b96c38bd1ef3eb, type: 3}
+  m_PrefabInstance: {fileID: 1032435794}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &1032435798 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 4951291839203360579, guid: 4f041a3fc97c443468b96c38bd1ef3eb, type: 3}
+  m_PrefabInstance: {fileID: 1032435794}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &1032435799 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 941007423759728591, guid: 4f041a3fc97c443468b96c38bd1ef3eb, type: 3}
+  m_PrefabInstance: {fileID: 1032435794}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1045046217
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5960,6 +6007,8 @@ MonoBehaviour:
   distance: 10.5
   cameraAxis: {x: 0, y: 0, z: 0}
   offset: {x: 0, y: 0, z: 0}
+  Yclamp: 0
+  offsetCal: 0
 --- !u!4 &1378230213
 Transform:
   m_ObjectHideFlags: 0
@@ -7715,6 +7764,8 @@ MonoBehaviour:
   distance: 10.5
   cameraAxis: {x: 0, y: 0, z: 0}
   offset: {x: 0, y: 0, z: 0}
+  Yclamp: 0
+  offsetCal: 0
 --- !u!4 &1763099776
 Transform:
   m_ObjectHideFlags: 0
@@ -7723,7 +7774,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1763099774}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.3062468, y: 0.2791326, z: 8.44816}
+  m_LocalPosition: {x: -0.1, y: -0.27, z: 1.46}
   m_LocalScale: {x: 0.8435, y: 0.8435, z: 0.8435}
   m_Children:
   - {fileID: 1999763443}
@@ -7861,6 +7912,8 @@ MonoBehaviour:
   distance: 0
   cameraAxis: {x: 0, y: 0, z: 0}
   offset: {x: 0, y: 0, z: 0}
+  Yclamp: 1
+  offsetCal: 1
 --- !u!65 &1802330087
 BoxCollider:
   m_ObjectHideFlags: 0

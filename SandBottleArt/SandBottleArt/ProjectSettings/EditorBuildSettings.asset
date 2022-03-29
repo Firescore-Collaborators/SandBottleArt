@@ -4,5 +4,20 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Sand Art_Game/_Scenes/Levels/Level 1.unity
+    guid: 83613f2dac4041c4aa6600b94b0f61db
+  - enabled: 1
+    path: Assets/Sand Art_Game/_Scenes/Levels/Level 2.unity
+    guid: 9d8aea6ff40a2a94096bf3934117bcd0
+  - enabled: 1
+    path: Assets/Sand Art_Game/_Scenes/Levels/Level 3.unity
+    guid: b2338ca090b76ab408648ee912f32eee
+  - enabled: 1
+    path: Assets/Sand Art_Game/_Scenes/Levels/Level 4.unity
+    guid: c573b556777f10a40b2c5cf66785056c
+  - enabled: 1
+    path: Assets/Sand Art_Game/_Scenes/Levels/Level 5.unity
+    guid: ac260d7ab385e58488bda7390651d785
   m_configObjects: {}

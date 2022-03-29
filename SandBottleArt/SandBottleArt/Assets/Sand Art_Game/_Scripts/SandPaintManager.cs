@@ -4,6 +4,7 @@ using UnityEngine;
 using PaintIn3D;
 using System.Linq;
 using NaughtyAttributes;
+using UnityEngine.EventSystems;
 
 [System.Serializable]
 public class SandPaintStep
@@ -87,6 +88,7 @@ public class SandPaintManager : MonoBehaviour
         }
     }
 
+    public float currentPercent;
     int currentStepIndex;
 
     bool MouseDown{
@@ -133,6 +135,7 @@ public class SandPaintManager : MonoBehaviour
     }
     void SetInput()
     {
+        if(EventSystem.current.IsPointerOverGameObject()) {return;}
         if(Input.GetMouseButtonDown(0))
         {
             MouseDown = true;
@@ -149,6 +152,15 @@ public class SandPaintManager : MonoBehaviour
         }*/
     }
 
+    public void MouseClick()
+    {
+        if(!this.enabled) {return;}
+
+        MouseDown = true;
+        Timer.Delay(currentStep.timeDelay, () => {
+            toFill = true;
+        });
+    }
     async void FillSand()
     {
         if(toFill)
@@ -176,7 +188,7 @@ public class SandPaintManager : MonoBehaviour
                 }
             }
             else{
-
+                    print("ff");
 
                 /*float sum = 0;
                 for(int i = 0; i < currentStep.counters.Length; i++)
@@ -224,6 +236,7 @@ public class SandPaintManager : MonoBehaviour
                 //     toFill = false;
                 // }
 
+                currentPercent = meshManipulate.CalculatePercantage();
                 float blendWeight = Remap.remap(meshManipulate.CalculatePercantage(), 0, 1, 0, 100,false,false,false,false);
                 currentStep.rend.SetBlendShapeWeight(1,blendWeight);
                 //currentStep.rend.transform.position = Vector3.Lerp(currentStep.fillLerpPos.position, currentStep.startPos, meshManipulate.CalculatePercantage());

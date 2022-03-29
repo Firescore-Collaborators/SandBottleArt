@@ -16,7 +16,7 @@ public class LevelManager : MonoBehaviour
     }
     void Start()
     {
-        //CheckSameLevel();
+        CheckSameLevel();
         SetLevelIndex();
     }
     void Update()

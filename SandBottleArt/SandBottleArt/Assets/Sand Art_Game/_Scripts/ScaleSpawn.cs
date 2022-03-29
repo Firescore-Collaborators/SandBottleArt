@@ -9,7 +9,7 @@ public class ScaleSpawn : MonoBehaviour
     public float endValue;
     public float duration = 0.4f;
 
-    void Start()
+    void OnEnable()
     {
         Bounce();
     }

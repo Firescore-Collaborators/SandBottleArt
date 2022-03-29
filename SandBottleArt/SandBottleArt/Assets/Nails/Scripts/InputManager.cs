@@ -28,7 +28,7 @@ public class InputManager : MonoBehaviour
         if (inst == null)
         {
             inst = this;
-            DontDestroyOnLoad(gameObject);
+            //DontDestroyOnLoad(gameObject);
         }
         else
         {

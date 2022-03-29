@@ -15,7 +15,8 @@ public class ObjectFollowMouse : MonoBehaviour
     RaycastHit hit;
 
     public Vector3 offset;
-
+    public bool Yclamp;
+    public bool offsetCal;
     private void OnEnable() {
 
         Start();
@@ -23,7 +24,8 @@ public class ObjectFollowMouse : MonoBehaviour
         
         newPoint = ray.GetPoint(distance);
 
-        offset = newPoint - transform.position ;
+        if(offsetCal)
+            offset = newPoint - transform.position ;
     }
     void Start()
     {
@@ -49,7 +51,11 @@ public class ObjectFollowMouse : MonoBehaviour
             newPoint.y = defValue.y;
         }
 
-        transform.position = newPoint - offset;
+        Vector3 pos = newPoint - offset;
+        if(Yclamp)
+            transform.position = new Vector3(transform.position.x,pos.y,transform.position.z);
+        else 
+            transform.position = pos;
     }
 
     private void OnDrawGizmos() {

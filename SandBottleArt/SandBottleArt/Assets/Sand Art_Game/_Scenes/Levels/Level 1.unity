@@ -2035,25 +2035,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sand FX 5
       objectReference: {fileID: 0}
-    - target: {fileID: 1618020983075412, guid: 984505ee1340f5344b8a220626d7fb79, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4699422113571928, guid: 984505ee1340f5344b8a220626d7fb79, type: 3}
       propertyPath: m_RootOrder
       value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4699422113571928, guid: 984505ee1340f5344b8a220626d7fb79, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 3.4767
-      objectReference: {fileID: 0}
-    - target: {fileID: 4699422113571928, guid: 984505ee1340f5344b8a220626d7fb79, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 7.568081
-      objectReference: {fileID: 0}
-    - target: {fileID: 4699422113571928, guid: 984505ee1340f5344b8a220626d7fb79, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 3.4767
       objectReference: {fileID: 0}
     - target: {fileID: 4699422113571928, guid: 984505ee1340f5344b8a220626d7fb79, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2094,38 +2078,6 @@ PrefabInstance:
     - target: {fileID: 4699422113571928, guid: 984505ee1340f5344b8a220626d7fb79, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 198445493431297426, guid: 984505ee1340f5344b8a220626d7fb79, type: 3}
-      propertyPath: playOnAwake
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 198445493431297426, guid: 984505ee1340f5344b8a220626d7fb79, type: 3}
-      propertyPath: EmissionModule.m_BurstCount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 198445493431297426, guid: 984505ee1340f5344b8a220626d7fb79, type: 3}
-      propertyPath: InitialModule.startSize.scalar
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 198445493431297426, guid: 984505ee1340f5344b8a220626d7fb79, type: 3}
-      propertyPath: InitialModule.startSizeZ.scalar
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 198445493431297426, guid: 984505ee1340f5344b8a220626d7fb79, type: 3}
-      propertyPath: EmissionModule.m_Bursts.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 198445493431297426, guid: 984505ee1340f5344b8a220626d7fb79, type: 3}
-      propertyPath: EmissionModule.rateOverTime.scalar
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 198445493431297426, guid: 984505ee1340f5344b8a220626d7fb79, type: 3}
-      propertyPath: EmissionModule.rateOverDistance.scalar
-      value: 2.54
-      objectReference: {fileID: 0}
-    - target: {fileID: 199296080815158628, guid: 984505ee1340f5344b8a220626d7fb79, type: 3}
-      propertyPath: m_Materials.Array.size
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 984505ee1340f5344b8a220626d7fb79, type: 3}

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using NaughtyAttributes;
-//using Tabtale.TTPlugins;
+using Tabtale.TTPlugins;
 public class LevelManager : MonoBehaviour
 {
 
@@ -12,11 +12,11 @@ public class LevelManager : MonoBehaviour
 
     void Awake()
     {
-        //TTPCore.Setup();
+        TTPCore.Setup();
     }
     void Start()
     {
-        //CheckSameLevel();
+        CheckSameLevel();
         SetLevelIndex();
     }
     void Update()
